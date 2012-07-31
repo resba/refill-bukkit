@@ -1,0 +1,59 @@
+{% extends "banner_base.html" %}
+
+{% load i18n %}
+{% load ifsetting_tag %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block banner %}
+    <h1>{% trans "The Concept is Clear." %}</h1>
+    <p>
+        {% blocktrans %}
+            Welcome to the Ban Concept! We're an up and coming new Minecraft Ban Management System aimed at doing one thing really well:
+			Managing your bans in a non-intrusive and super-sexy web interface!
+        {% endblocktrans %}
+    </p>
+    
+    <h2>Give Us a Try!</h2>
+    <p>
+        {% blocktrans %}
+		We currently have (USERS) registered users managing (SERVERS) servers! Got questions? Ask away! Our support team would love to
+		answer any questions you may have! Want to talk to the staff behind The Ban Concept? Check us out on our Staff Page!
+        {% endblocktrans %}
+    </p>
+    
+    {% if user.is_authenticated %}
+        {% url what_next as what_next_url %}
+		<h2>Welcome Back!</h2>
+        <p class="what_next">{% blocktrans %}Wondering <a href="{{ what_next_url }}" class="btn primary large">What Next</a>?{% endblocktrans %}</p>
+    {% else %}
+        {% url acct_login as login_url %}
+        {% ifsetting ACCOUNT_OPEN_SIGNUP %}
+            {% url acct_signup as signup_url %}
+			<h2>Let's Get Started!</h2>
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn btn-primary">Sign Up</a> to try out the system! It's free and you have nothing to loose!{% endblocktrans %}</p>
+        {% else %}
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-primary btn-large">Log In</a> to try out the site.{% endblocktrans %}</p>
+        {% endifsetting %}
+    {% endif %}
+{% endblock %}
+
+{% block column-1 %}
+          <h2>Bans just got easier.</h2>
+           <p>With our intuitive plugin commands and sexy Web UI, ban management and statistics have just gotten a whole lot easier to manage and prettier to look at. No more sifting through text files or confusing YAML lists.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+{% endblock %}
+
+{% block column-2 %}
+          <h2>Pick your modding poison.</h2>
+           <p>The Ban Concept offers plugins for all the currently active server mod projects out there including the ever so popular Bukkit, the hackish and poorly designed Spout, or the Amazing, Wonderful, and Stupendiously redesigned Canary.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+{% endblock %}
+
+{% block column-3 %}
+          <h2>It's your server.</h2>
+          <p>Don't like TBC's Subscription System? Don't want other servers peeking in on your bans or using your list? You have the option to opt-out of our subscription service and plainly use our web UI for easy ban display and management on your terms. You can also !!PROPRITARY INFORMATION THAT WILL NOT BE RELEASED UNTIL PROJECT LAUNCH. Love resba.!!</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+{% endblock %}
