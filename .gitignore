@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Python!
 *.py[co]
 
@@ -29,10 +30,15 @@ nosetests.xml
 .mr.developer.cfg
 
 # Django!
+=======
+>>>>>>> master
 *.log
 *.pot
 *.pyc
 local_settings.py
+<<<<<<< HEAD
 
 # Static stuff!
 /banconcept/public/site_media/static/
+=======
+>>>>>>> master
